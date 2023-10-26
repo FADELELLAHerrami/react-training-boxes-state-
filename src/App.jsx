@@ -8,20 +8,9 @@ export default function App() {
 
   function toggle(id) {
     setSquare((prevSquare) => {
-      const newSquare = [];
-      for (let i = 0; i < prevSquare.length; i++) {
-        const currentSquare = prevSquare[i];
-        if (currentSquare.id === id) {
-          const updatedSquare = {
-            ...currentSquare,
-            on: !currentSquare.on,
-          };
-          newSquare.push(updatedSquare);
-        } else {
-          newSquare.push(currentSquare);
-        }
-      }
-      return newSquare;
+      return prevSquare.map((box) => {
+        return box.id === id ? { ...box, on: !box.on } : box;
+      });
     });
   }
 
